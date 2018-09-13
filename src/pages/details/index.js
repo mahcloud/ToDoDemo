@@ -1,11 +1,19 @@
 import React from "react";
 import Style from "./details.style";
+import { cx } from "emotion";
+import { isNil, orderBy } from "lodash";
 
 class DetailsPage extends React.Component {
   renderTasks() {
-    return(this.props.tasks.map((task) => {
+    return(orderBy(this.props.tasks, ["isLocked"], ["asc"]).map((task) => {
+      const classes = cx({
+        task: true,
+        locked: task.isLocked,
+        completed: !isNil(task.completedAt)
+      });
+
       return(
-        <div key={task.id} className="task" onClick={() => this.props.onCheckTask(task.id)}>
+        <div key={task.id} className={classes} onClick={() => this.props.onCheckTask(task.id)}>
           <div className="task-name">{task.task}</div>
         </div>
       );
@@ -15,9 +23,13 @@ class DetailsPage extends React.Component {
   render() {
     return(
       <Style className="details-page">
-        <h3>{this.props.groupName}</h3>
-        <a onClick={() => this.props.onBack()}>ALL GROUPS</a>
-        {this.renderTasks()}
+        <div className="title-bar">
+          <h3>{this.props.groupName}</h3>
+          <a href="" onClick={() => this.props.onBack()}>ALL GROUPS</a>
+        </div>
+        <div className="tasks">
+          {this.renderTasks()}
+        </div>
       </Style>
     );
   }

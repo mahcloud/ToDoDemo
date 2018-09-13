@@ -17,11 +17,20 @@ class App extends React.Component {
 
   reduce() {
     const data = cloneDeep(Data);
+    let groups = this.reduceGroups(data);
+    let tasks = this.reduceTasks(data);
+
+    return({
+      activeGroupName: null,
+      groups: groups,
+      tasks: tasks
+    });
+  }
+
+  reduceGroups(data) {
     let groups = {};
-    let tasks = {};
 
     data.forEach((task) => {
-      tasks[task.id] = task;
       if(isNil(groups[task.group])) {
         groups[task.group] = {
           completedTotal: task.completedAt === null ? 0 : 1,
@@ -38,11 +47,30 @@ class App extends React.Component {
       }
     });
 
-    return({
-      activeGroupName: null,
-      groups: groups,
-      tasks: tasks
+    return(groups);
+  }
+
+  reduceTasks(data) {
+    let tasks = {};
+
+    data.forEach((task) => {
+      tasks[task.id] = task;
     });
+
+    console.log(tasks);
+
+    data.forEach((task) => {
+      let locked;
+      for(let i = 0; i < task.dependencyIds.length; i++) {
+        if(tasks[task.dependencyIds[i]].completedAt === null) {
+          locked = true;
+          break;
+        }
+      }
+      tasks[task.id].isLocked = locked;
+    });
+
+    return(tasks);
   }
 
   groupTasks() {
