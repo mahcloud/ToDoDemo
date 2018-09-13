@@ -1,0 +1,60 @@
+{
+  "name": "ToDoDemo",
+  "version": "0.0.1",
+  "description": "ToDo Demo app",
+  "author": "Mike Hoffert",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "main": "index.js",
+  "scripts": {
+    "start": "./node_modules/.bin/webpack-dev-server --env",
+    "nomap": "./node_modules/.bin/webpack-dev-server --env.nodevtools",
+    "lint": "eslint test demo app",
+    "lint:css": "stylelint \"./**/*.style.js\""
+  },
+  "dependencies": {
+    "babel-polyfill": "6.26.0",
+    "emotion": "9.2.6",
+    "emotion-theming": "9.2.6",
+    "lodash": "4.17.10",
+    "react": "16.4.1",
+    "react-dom": "16.4.1",
+    "react-emotion": "9.2.6"
+  },
+  "devDependencies": {
+    "babel-cli": "6.26.0",
+    "babel-eslint": "8.2.3",
+    "babel-loader": "7.1.4",
+    "babel-plugin-emotion": "9.2.6",
+    "babel-preset-env": "1.7.0",
+    "babel-plugin-lodash": "3.3.4",
+    "babel-plugin-transform-es2015-modules-commonjs": "6.26.2",
+    "babel-plugin-transform-object-assign": "6.22.0",
+    "babel-plugin-transform-object-rest-spread": "6.26.0",
+    "babel-preset-react": "6.24.1",
+    "babel-register": "6.26.0",
+    "eslint": "4.19.1",
+    "eslint-config-standard": "11.0.0",
+    "eslint-loader": "2.0.0",
+    "babel-plugin-array-includes": "2.0.3",
+    "eslint-plugin-emotion": "9.2.6",
+    "eslint-plugin-import": "2.12.0",
+    "eslint-plugin-node": "6.0.1",
+    "eslint-plugin-promise": "3.8.0",
+    "eslint-plugin-react": "7.9.1",
+    "eslint-plugin-standard": "3.1.0",
+    "html-webpack-plugin": "3.2.0",
+    "stylelint": "9.3.0",
+    "stylelint-config-recommended": "2.1.0",
+    "stylelint-config-standard": "18.2.0",
+    "stylelint-config-styled-components": "0.1.1",
+    "stylelint-custom-processor-loader": "0.5.0",
+    "stylelint-processor-styled-components": "1.3.1",
+    "webpack": "4.12.0",
+    "webpack-bundle-analyzer": "2.13.1",
+    "webpack-cli": "3.0.8",
+    "webpack-dev-server": "3.1.4"
+  }
+}
