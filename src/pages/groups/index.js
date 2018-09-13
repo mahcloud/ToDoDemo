@@ -7,7 +7,7 @@ class GroupsPage extends React.Component {
       return(
         <div key={group.name} className="group" onClick={() => this.props.onSelectGroup(group.name)}>
           <div className="group-name">{group.name}</div>
-          <div className="group-completed-total">{group.completedTotal} OF {group.total} TASKS COMPLETED</div>
+          <div className="group-completed-total">{group.completedTotal} OF {group.total} TASKS COMPLETE</div>
         </div>
       );
     }));
