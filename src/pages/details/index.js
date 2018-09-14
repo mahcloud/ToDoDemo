@@ -5,7 +5,7 @@ import { isNil, orderBy } from "lodash";
 
 class DetailsPage extends React.Component {
   renderTasks() {
-    return(orderBy(this.props.tasks, ["isLocked"], ["asc"]).map((task) => {
+    return(orderBy(this.props.tasks, ["id"], ["desc"]).map((task) => {
       const classes = cx({
         task: true,
         locked: task.isLocked,
@@ -25,7 +25,7 @@ class DetailsPage extends React.Component {
       <Style className="details-page">
         <div className="title-bar">
           <h3>{this.props.groupName}</h3>
-          <a href="" onClick={() => this.props.onBack()}>ALL GROUPS</a>
+          <a onClick={() => this.props.onBack()}>ALL GROUPS</a>
         </div>
         <div className="tasks">
           {this.renderTasks()}
